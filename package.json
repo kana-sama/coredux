@@ -1,0 +1,60 @@
+{
+  "name": "coredux",
+  "version": "1.0.0",
+  "description": "Dualism to Redux. Two-way combining of redux modules",
+  "main": "lib/coredux.js",
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "clean": "rimraf lib dist es coverage",
+    "format": "prettier --write \"{src,test}/**/*.js\"",
+    "format:check": "prettier --list-different \"{src,test}/**/*.js\"",
+    "pretest": "npm run build:commonjs",
+    "test": "cross-env BABEL_ENV=commonjs jest",
+    "test:watch": "npm test -- --watch",
+    "test:cov": "npm test -- --coverage",
+    "build:commonjs": "cross-env NODE_ENV=cjs rollup -c -o lib/coredux.js",
+    "build:es": "cross-env BABEL_ENV=es NODE_ENV=es rollup -c -o es/coredux.js",
+    "build:umd":
+      "cross-env BABEL_ENV=es NODE_ENV=development rollup -c -o dist/coredux.js",
+    "build:umd:min":
+      "cross-env BABEL_ENV=es NODE_ENV=production rollup -c -o dist/coredux.min.js",
+    "build":
+      "npm run build:commonjs && npm run build:es && npm run build:umd && npm run build:umd:min",
+    "prepare":
+      "npm run clean && npm run format:check && npm test && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kana-sama/coredux.git"
+  },
+  "keywords": [
+    "redux",
+    "reducer",
+    "selector",
+    "composition",
+    "state",
+    "functional"
+  ],
+  "author": "Andrei Krasnabayeu <andrew4chrome@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kana-sama/coredux/issues"
+  },
+  "homepage": "https://github.com/kana-sama/coredux#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "cross-env": "^5.1.3",
+    "jest": "^22.3.0",
+    "prettier": "^1.10.2",
+    "rifraf": "^2.0.3",
+    "rollup": "^0.56.2",
+    "rollup-plugin-babel": "^3.0.3",
+    "rollup-plugin-node-resolve": "^3.0.3",
+    "rollup-plugin-uglify": "^3.0.0"
+  }
+}
