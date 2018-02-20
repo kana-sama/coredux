@@ -1,14 +1,19 @@
 # coredux
-Dualism to Redux. Two-way combining of redux modules
+Dualism to Redux. Two-way combining of redux modules.
 
 Example: https://github.com/kana-sama/coredux-example
 
+- [Motivation](#motivation)
+- [Example](#example)
+
+## Motivation
 Reducer is just a composable first class setter. If some reducer changes a value on some action, it will change this value in a more complicated structure after combining multiple reducers into object reducer too. So, we can combine reducers as we please.
 
 But with selectors everything is different , in the selectors we must know the full path to value in the state, so after reducers relocating we should fix some selectors. And it is a problem because all can be better.
 
 Welcome new concept - Node. It is not just setter, like a reducer, and not just getter, like a selector, it is a COMPOSABLE combination of setters and getters. We can combine any nodes and all selectors will automatically know, how to get the path to value, like actions in reducers.
 
+## Example
 A simple example of the frequent case - table of posts - tuple of ids and normalized entities of posts.
 
 Let's begin with defining initial state:
