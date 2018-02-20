@@ -73,7 +73,7 @@ posts.select(getPosts)(state3); // posts
 ```
 
 Let's create another node for comments in another style:
-```
+```javascript
 import { createAction, createQuery, createNode, combineNodes } from "coredux";
 
 export const fetchCommentsRequest = createAction();
