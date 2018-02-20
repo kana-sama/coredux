@@ -138,6 +138,17 @@ export const root = combineNodes({
 
 Test:
 ```javascript
+const commentA = { id: 1, text: "comment A" };
+const commentB = { id: 2, text: "comment B" };
+const commentC = { id: 3, text: "comment C" };
+
+const comments = [commentA, commentB, commentC];
+
+const postA = { id: 1, text: "post", commentsIds: [commentA.id, commentB.id] };
+const postB = { id: 2, text: "post 2", commentsIds: [commentC.id] };
+
+const posts = [postA, postB];
+
 expect(root.select(getAreCommentsFetching)(getState())).toBe(false);
 dispatch(fetchCommentsRequest());
 expect(root.select(getAreCommentsFetching)(getState())).toBe(true);
