@@ -149,6 +149,8 @@ const postB = { id: 2, text: "post 2", commentsIds: [commentC.id] };
 
 const posts = [postA, postB];
 
+const { dispatch, getState } = createStore(root.reducer);
+
 expect(root.select(getAreCommentsFetching)(getState())).toBe(false);
 dispatch(fetchCommentsRequest());
 expect(root.select(getAreCommentsFetching)(getState())).toBe(true);
